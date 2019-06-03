@@ -125,7 +125,7 @@ export default {
     },
     getAllTypeNum () { // 获取各种状态的订单数量
       var flag = localStorage.getItem('Flag') || ''
-      if (flag != 'isLogin') {
+      if (flag !== 'isLogin') {
         return false
       }
       this.$http.get('subPur/subDiffTypeOrderCount', {
@@ -140,26 +140,26 @@ export default {
     },
     goBeforeLoginUrl (status) { // status :  0 需要登录  1 不需要登录，直接进入主界面  2 代理商关闭 3 准代理
       let url = sessionStorage.getItem('beforeLoginUrl') || ''
-      if (status==0) {
+      if (status === 0) {
         if (this.linkId) { // 如果有邀请链接说明是点邀请链接进来的新用户
           this.$router.replace({name: 'firstStep', query: {linkId: this.linkId}})
         } else {
           this.$router.replace({name: 'Bind'})
         }
-      } else if (status==1) {
+      } else if (status === 1) {
         this.getAllTypeNum()
-        if (!url || url.indexOf('/authorization') != -1) {
+        if (!url || url.indexOf('/authorization') !== -1) {
           this.$router.replace({name: 'Home'})
         } else {
-          if (url == '/') {
+          if (url === '/') {
             url = '/home'
           }
           this.$router.replace({path: url})
           sessionStorage.removeItem('beforeLoginUrl')
         }
-      } else if (status==2) {
+      } else if (status === 2) {
         this.$vux.toast.text('代理商被关闭', 'middle')
-      } else if (status==3) {
+      } else if (status === 3) {
         this.$router.replace({name: 'thirdStep'})
       }
     },
@@ -192,7 +192,7 @@ export default {
       this.$router.push({name: 'myOrders', query: {orderModeType: 1}})
     },
     goOtherPurchase (orderStatus) { // 下级进货订单页面
-      var orderStatus = orderStatus || ''
+      orderStatus = orderStatus || ''
       this.$router.push({name: 'otherOrders', query: {orderStatus: orderStatus}})
     },
     ToExamineList () { // 审核代理

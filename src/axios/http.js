@@ -77,7 +77,7 @@ instance.interceptors.response.use(
       }, 200)
     }
     console.log('res', res)
-    if (res.data.code == 200) {
+    if (res.data.code === 200) {
       return res
     }
   },

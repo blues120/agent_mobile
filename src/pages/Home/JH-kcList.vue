@@ -69,7 +69,7 @@ export default {
   created () {
     if (this.$route.query.type) {
       this.type = this.$route.query.type
-      if (this.type ==1) {
+      if (this.type === 1) {
         this.selectInde = 1
         this.selectedLabel = '实体库存列表'
       }
@@ -78,6 +78,7 @@ export default {
       this.subAgentId = this.$route.query.agentid
     }
     for (var u in this.tabLabels) {
+      console.log(u)
       this.showOrderArry.push({})
     }
     this.sendRequestxhr()
@@ -180,8 +181,8 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[0] ? (this.tabLabels[0].page==1 ? [] : this.showOrderArry[0]) : []
-          this.tabLabels[0].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[0] ? (this.tabLabels[0].page === 1 ? [] : this.showOrderArry[0]) : []
+          this.tabLabels[0].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage))
           currentArry = currentArry.concat(res.data.data.page.list)
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
           this.AllGoodsListArry[0] = currentArry
@@ -205,8 +206,8 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage))
           currentArry = currentArry.concat(res.data.data.page.list)
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -237,7 +238,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

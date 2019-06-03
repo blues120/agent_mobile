@@ -52,7 +52,7 @@ export default {
       this.$http.get('sendCode', {
         params: param
       }).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code === 200) {
           this.$router.replace({name: 'messageCode', query: {changeMobile: false, newtel: this.newmobile}})
         }
       }, () => {})
@@ -66,7 +66,7 @@ export default {
       this.$http.get('sendCode', {
         params: param
       }).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code === 200) {
           this.$router.replace({name: 'messageCode', query: {changeMobile: true, newtel: this.newmobile}})
         }
       }, () => {})

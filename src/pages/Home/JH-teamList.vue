@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <emptybox v-if="goodsListArry.length==0"></emptybox>
-                <p class="all-done" v-if="!tabLabels[inde].hasNexPage && inde == 1">已全部加载</p>
+                <p class="all-done" v-if="!tabLabels[inde].hasNexPage && inde === 1">已全部加载</p>
               </cube-scroll>
             </cube-slide-item>
           </cube-slide>
@@ -149,8 +149,8 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage))
           currentArry = currentArry.concat(res.data.data.list)
           currentArry = this.uniqueObj(currentArry, 'productId') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -176,7 +176,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -188,7 +188,7 @@ export default {
       this.sendRequestxhr()
     },
     onPullingUp () {
-      if (this.selectInde==1 && this.tabLabels[this.selectInde].hasNexPage) {
+      if (this.selectInde === 1 && this.tabLabels[this.selectInde].hasNexPage) {
         this.tabLabels[this.selectInde].page++
         this.sendRequestxhr()
       } else {

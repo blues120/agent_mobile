@@ -45,7 +45,7 @@
                   <div class="ordertop">
                     <span  v-if="watchMoreFnc">订单编号：{{orderitem.orderNo}}</span>
                     <span  v-else> 上级：{{orderitem.shipmentAgentName}} （{{orderitem.shipmentAgentMobile}}）</span>
-                    <span class="orderstatus">{{orderitem.closed==1 ?  '已关闭':orderitem.orderStatus==1  ? (orderitem.auditStatus && orderitem.auditStatus < 3 ? '凭证已提交':orderitem.auditStatus && orderitem.auditStatus == 3 ? '已付款':'待付款'): (orderitem.orderStatus==2 ? '待发货' : (orderitem.orderStatus==3 ? '待收货' : '已完成' )) }}</span>
+                    <span class="orderstatus">{{orderitem.closed === 1 ?  '已关闭':orderitem.orderStatus === 1  ? (orderitem.auditStatus && orderitem.auditStatus < 3 ? '凭证已提交':orderitem.auditStatus && orderitem.auditStatus === 3 ? '已付款':'待付款'): (orderitem.orderStatus==2 ? '待发货' : (orderitem.orderStatus==3 ? '待收货' : '已完成' )) }}</span>
                   </div>
                   <p class="order-time"  v-if="!watchMoreFnc">{{orderitem.createTime}}</p>
                   <div class="orderinfobox" >
@@ -241,6 +241,7 @@ export default {
       this.selectedLabel = this.tabLabels[this.selectInde].label
     }
     for (var u in this.tabLabels) {
+      console.log(u)
       this.showOrderArry.push({})
     }
     // this.getAllTypeNum()
@@ -323,7 +324,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -349,8 +350,8 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          this.tabLabels[this.selectInde].hasNexPage = (res.data.data.totalPage > res.data.data.currPage) ? true : false
-          var currentObj = this.showOrderArry[this.selectInde] ? (obj.page==1 ? {} : this.showOrderArry[this.selectInde]) : {}
+          this.tabLabels[this.selectInde].hasNexPage = (res.data.data.totalPage > res.data.data.currPage)
+          var currentObj = this.showOrderArry[this.selectInde] ? (obj.page === 1 ? {} : this.showOrderArry[this.selectInde]) : {}
           if (this.key) { // 如果key 存在说明本次显示的结果是搜索结果
             currentObj.searchArry = currentObj.searchArry ? currentObj.searchArry.concat(res.data.data.list) : [].concat(res.data.data.list)
             currentObj.searchArry = this.uniqueObj(currentObj.searchArry, 'id') // 去一下重防止重复请求

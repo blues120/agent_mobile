@@ -4,7 +4,7 @@
       <section class="product">
         <p class="tip">邀请代理想代理的产品 <span v-if="goInvite">（单选）</span>：</p>
         <ul>
-          <li :class="{'active': Chooseproductid == product.id}" v-for="product in productGroup" :key="product.id" @click.prevent="goInvite?chooseProduct(product.id):''">
+          <li :class="{'active': Chooseproductid === product.id}" v-for="product in productGroup" :key="product.id" @click.prevent="goInvite?chooseProduct(product.id):''">
             <label>
               <input type="radio" v-model="Chooseproductid" :value="product.id" name="product">
               <p class="title">{{product.name}}</p>
@@ -17,7 +17,7 @@
       <section class="level">
         <p class="tip">你想发展代理的级别 <span v-if="goInvite">（可单或多选）</span>：</p>
         <ul>
-          <li :class="{'active':goInvite?(level.indexOf(grade.id) != -1):(level == grade.id)}" v-for="grade in gradeList" :key="grade.id">
+          <li :class="{'active':goInvite?(level.indexOf(grade.id) != -1):(level === grade.id)}" v-for="grade in gradeList" :key="grade.id">
             <label>
               <input v-model="level" :type="goInvite?'checkbox':'radio'" :value="grade.id">
               <p class="title">{{grade.gradeAliasName}} <span class="level" v-if="goInvite">跨级推荐</span></p>
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     chooseProduct (id) {
-      if (this.Chooseproductid != id) {
+      if (this.Chooseproductid !== id) {
         this.Chooseproductid = id
         this.level = []
         // this.level = [] // 重新选择产品组合后清空已经选择的代理级别
@@ -102,7 +102,7 @@ export default {
           'linkId': linkId || '1'
         }
       }).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.productGroup = [].concat(res.data.data.productGroup)
           this.gradeList = res.data.data.gradeList
         }
@@ -110,7 +110,7 @@ export default {
     },
     geAllProduct (flag) {
       this.$http.get('product/getAllProductGroup').then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.productGroup = res.data.data
           if (res.data.data.length > 0) {
             this.Chooseproductid = res.data.data[0].id
@@ -129,13 +129,13 @@ export default {
           }
         }
       ).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.gradeList = res.data.data.gradeList
         }
       })
     },
     createInviteLink () {
-      if (this.level.length ==0) {
+      if (this.level.length === 0) {
         this.$vux.toast.text('请选择代理等级', 'middle')
         return
       }
@@ -145,7 +145,7 @@ export default {
       }
       objpara = Qs.stringify(objpara)
       this.$http.post('generatorInviteQrcode', objpara).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           localStorage.setItem('linkId', res.data.data.linkId)
           this.$router.push({
             name: 'CreateLink', query: {shareObj: res.data.data}

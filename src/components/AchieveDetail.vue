@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="goodsList">
-        <div class="goodsitem" v-for="i in 4">
+        <div class="goodsitem" v-for="i in 4" :key="i">
           <img src="~@/assets/images/gosettlement/tupian@2x.png" alt="ICON" class="goodspic" @click="closeeditzz">
           <div>
             <span class="goodsname">美瘦好尔生健脾胃酵素</span>

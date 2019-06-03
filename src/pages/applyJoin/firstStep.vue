@@ -90,7 +90,7 @@ export default {
         setTimeout(() => {
           that.isdisabled = false
         }, 200)
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.shareName = res.data.data.name
           this.inviteId = res.data.data.agentId
           this.shareLevel = res.data.data.gradeAliasName

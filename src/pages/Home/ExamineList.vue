@@ -144,7 +144,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -169,9 +169,9 @@ export default {
           }
         }
       ).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.tabLabels[cur].xhrFlag = true
-          this.tabLabels[cur].hasNexPage = (res.data.data.reviewList.length == this.limit ? true : false)
+          this.tabLabels[cur].hasNexPage = (res.data.data.reviewList.length === this.limit)
           var currentArry = this.BigListArry[cur] ? this.BigListArry[cur] : []
           currentArry = currentArry.concat(res.data.data.reviewList)
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
@@ -181,7 +181,7 @@ export default {
           this.$refs.slide.refresh() // 动态添加的轮播强制刷一下
           setTimeout(() => {
             that.$refs[scrollnow][0].forceUpdate() // 停止上拉或者下拉的刷新 loading 动作
-          },600)
+          }, 600)
         }
       })
     }

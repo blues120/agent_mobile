@@ -134,9 +134,9 @@ export default {
         if (res) {
           console.log('res', res)
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          if (this.selectInde == 0) {
-            this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.cloudDetails.totalPage > res.data.data.cloudDetails.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          if (this.selectInde === 0) {
+            this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.cloudDetails.totalPage > res.data.data.cloudDetails.currPage))
             currentArry = currentArry.concat(res.data.data.cloudDetails.list)
           } else {
             currentArry = currentArry.concat(res.data.data.physicalDetails.list)
@@ -173,7 +173,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

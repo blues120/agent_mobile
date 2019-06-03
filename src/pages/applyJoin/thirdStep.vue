@@ -136,12 +136,12 @@ export default {
           openId: openId
         }
       }).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.preAgentObj = res.data.data
           localStorage.setItem('userInfo', res.data.data)
-          if (res.data.data.agent.reviewStatus ==0) {
+          if (res.data.data.agent.reviewStatus === 0) {
             this.actStep = 2
-          } else if (res.data.data.agent.reviewStatus ==1) {
+          } else if (res.data.data.agent.reviewStatus === 1) {
             this.actStep = 3
           }
         }

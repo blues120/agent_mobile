@@ -58,7 +58,7 @@ export default {
     }),
     leftOptions () {
       return {
-        showBack: this.$route.path !== '/home' && this.$route.path !== '/message' && this.$route.path !== '/my' && this.$route.path !== '/bind' && this.$route.path !== '/authorization'  && this.$route.path !== '/applyJoin/third-step' && this.$route.path !== '/applyJoin/first-step'
+        showBack: this.$route.path !== '/home' && this.$route.path !== '/message' && this.$route.path !== '/my' && this.$route.path !== '/bind' && this.$route.path !== '/authorization' && this.$route.path !== '/applyJoin/third-step' && this.$route.path !== '/applyJoin/first-step'
       }
     },
     title () {

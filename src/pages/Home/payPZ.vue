@@ -86,7 +86,7 @@
         </div>
      </div>
       <span class="connectother"  v-if="payAuditId" @click="callPhone(pzObj.mobile)">联系{{from=='other'?'下级':'上级'}}</span>
-    </div v-e>
+    </div >
     <div v-transfer-dom>
       <confirm v-model="makeSureObj.show"
                :title="makeSureObj.head"
@@ -200,19 +200,19 @@ export default {
       })
     },
     inpuCorrectPass () {
-      if (this.makeSureObj.type==1) { // 如果是同意付款
+      if (this.makeSureObj.type === 1) { // 如果是同意付款
         this.agreeFKxhr()
       }
-      if (this.makeSureObj.type==2) { // 如果是驳回付款
+      if (this.makeSureObj.type === 2) { // 如果是驳回付款
         this.refuseFKxhr(this.refuseReason)
       }
-      if (this.makeSureObj.type==3) { // 如果是同意撤单申请
+      if (this.makeSureObj.type === 3) { // 如果是同意撤单申请
         this.SureCDxhr()
       }
-      if (this.makeSureObj.type===4) { // 如果是驳回撤单申请
+      if (this.makeSureObj.type === 4) { // 如果是驳回撤单申请
         this.RefuseCDxhr(this.refuseReason)
       }
-      if (this.makeSureObj.type==5) { // 如果是取消该打款凭证
+      if (this.makeSureObj.type === 5) { // 如果是取消该打款凭证
         this.caclepzxhr()
       }
     },

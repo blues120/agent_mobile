@@ -88,7 +88,7 @@ export default {
     },
     getUerInfo () {
       this.$http.get('info').then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           localStorage.setItem('userInfo', JSON.stringify(res.data.data))
         }
       })

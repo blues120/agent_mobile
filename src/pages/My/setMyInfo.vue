@@ -93,7 +93,7 @@ export default {
   methods: {
     goChangTX () {
       console.log('this.tempArry', this.tempArry)
-      if (this.tempArry.length==0) {
+      if (this.tempArry.length === 0) {
         this.$vux.toast.text('上传头像不能为空~', 'middle')
         return
       }
@@ -105,7 +105,7 @@ export default {
           'Content-Type': 'multipart/form-data'
         }
       }).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code === 200) {
           this.TxPicLocal = this.TxPic
           this.$vux.toast.text('头像修改成功~', 'middle')
           this.changeTX = false
@@ -218,7 +218,7 @@ export default {
       }
       params = Qs.stringify(params)
       this.$http.post('weChatUnbind', params).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('解绑成功', 'middle')
           localStorage.clear()
           localStorage.setItem('openid', openid)

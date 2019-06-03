@@ -60,7 +60,7 @@ export default {
       }
       objpara = Qs.stringify(objpara)
       this.$http.post('cart/addProductToCart', objpara).then((res) => {
-        if (res.data.code == '200') {
+        if (res.data.code === '200') {
           this.$vux.toast.text('加入购物车成功', 'middle')
           this.productObj.count += this.productObj.defaultbuyNum
           this.productObj.isinShopCar = true

@@ -139,7 +139,7 @@ export default {
           this.$vux.toast.text('请填写密码~', 'middle')
           return
         }
-        if (this.password != this.passwordagain) {
+        if (this.password !== this.passwordagain) {
           this.$vux.toast.text('两次输入的密码不一致!', 'middle')
           return
         }

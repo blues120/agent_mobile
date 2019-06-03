@@ -24,7 +24,7 @@
             <cube-slide-item>
             <cube-scroll >
               <ul class="list-wrapper">
-                <li v-for="i in 8" @click="showDetail">
+                <li v-for="i in 8" :key="i" @click="showDetail">
                   <img src="~@/assets/images/my/djs.png" alt="ICON" class="icon">
                   <div class="mid">
                     <span class="topdsc">采购订单-转采购收入</span>
@@ -41,7 +41,7 @@
           <cube-slide-item>
             <cube-scroll >
               <ul class="list-wrapper">
-                <li v-for="i in 8">
+                <li v-for="i in 8" :key="i">
                   <img src="~@/assets/images/my/djs.png" alt="ICON" class="icon">
                   <div class="mid">
                     <span class="topdsc">采购订单-转采购收入</span>
@@ -58,7 +58,7 @@
           <cube-slide-item>
             <cube-scroll >
               <ul class="list-wrapper">
-                <li v-for="i in 8">
+                <li v-for="i in 8" :key="i">
                   <img src="~@/assets/images/my/djs.png" alt="ICON" class="icon">
                   <div class="mid">
                     <span class="topdsc">采购订单-转采购收入</span>
@@ -141,7 +141,7 @@ export default {
       detailObj: {
         showDetail: false
       },
-      AllResPonseArry: [1,2,3]
+      AllResPonseArry: [1, 2, 3]
     }
   },
   created () {
@@ -181,29 +181,6 @@ export default {
     getResponse () {
       console.log('this.selectInde', this.selectInde)
       console.log('this.tabbles', this.tabLabels)
-      return
-      this.$http.get('stock/getAgentPurchaseList', {
-        params: {
-          page: this.tabLabels[this.selectInde].page,
-          limit: this.limit,
-          categoryId: this.tabLabels[this.selectInde].id,
-          upgradePurchase: this.upgradePurchase,
-          upgradeLevelId: this.upgradeLevelId,
-          cartType: this.cartType
-        }
-      }).then((res) => {
-        this.tabLabels[this.selectInde].xhrFlag = true
-        this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.data.totalPage > res.data.data.data.currPage) ? true : false)
-        var currentArry = this.AllResPonseArry[this.selectInde] ? this.AllResPonseArry[this.selectInde] : []
-        currentArry = currentArry.concat(res.data.data.data.list)
-        currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
-        this.productObj.count = res.data.data.cartTotalCount
-        this.AllResPonseArry[this.selectInde] = currentArry
-        var scrollnow = 'scroll' + this.selectInde
-        this.$refs[scrollnow][0].forceUpdate() // 停止上拉或者下拉的刷新 loading 动作
-        this.$forceUpdate() // 强制刷新一下页面
-        this.$refs.slide.refresh() // 动态添加的轮播强制刷一下
-      }, () => {})
     }
   },
   computed: {

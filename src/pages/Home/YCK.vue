@@ -46,7 +46,7 @@ export default {
         //   label: {
         //     show: true,
         //     formatter: function (params) {
-        //       if (params.seriesIndex == 2) {
+        //       if (params.seriesIndex === 2) {
         //         var str = (params.data[1]) * 100 + '%'
         //         return str
         //       }

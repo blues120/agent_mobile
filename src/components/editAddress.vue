@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import {TransferDom, XDialog, Popup, XInput, Confirm, Group, Cell, XButton, ChinaAddressV4Data, XAddress, XSwitch } from 'vux'
+
+import { TransferDom, XDialog, Popup, XInput, Confirm, Group, Cell, XButton, ChinaAddressV4Data, XAddress, XSwitch } from 'vux'
 
 export default {
   data () {

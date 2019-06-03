@@ -54,7 +54,7 @@ export default {
       }
       params = Qs.stringify(params)
       this.$http.post('quasiAgentUnbindInWechatPage', params).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('解绑成功', 'middle')
           localStorage.clear()
           localStorage.setItem('openid', openid)

@@ -224,7 +224,7 @@ export default {
     removeUpload (index) {
       if (this.UploadPicArry[index].id) { // 删除的是之前存进去的撤单图片凭证
         for (var m in this.picIds) { // 实际保存图片id数组效果删除
-          if (this.picIds[m] == this.UploadPicArry[index].id) {
+          if (this.picIds[m] === this.UploadPicArry[index].id) {
             this.picIds.splice(m, 1)
           }
         }
@@ -257,8 +257,8 @@ export default {
       if (strDate >= 0 && strDate <= 9) {
         strDate = '0' + strDate
       }
-      var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate +  ' ' + date.getHours() + seperator2 + date.getMinutes()
-        + seperator2 + date.getSeconds()
+      var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + ' ' + date.getHours() + seperator2 + date.getMinutes() +
+        seperator2 + date.getSeconds()
       return currentdate
     },
     goSubmit () {
@@ -266,7 +266,7 @@ export default {
         this.$vux.toast.text('请填写撤单原因~', 'middle')
         return
       }
-      if (this.picIds.length==0 && this.tempArry.length === 0) {
+      if (this.picIds.length === 0 && this.tempArry.length === 0) {
         this.$vux.toast.text('请上传凭证~', 'middle')
         return
       }

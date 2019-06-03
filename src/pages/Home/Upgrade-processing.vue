@@ -269,8 +269,8 @@ export default {
       this.$http.post('getSubAgentUpgradeList', params).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage))
           currentArry = currentArry.concat(res.data.data.page.list)
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -287,7 +287,7 @@ export default {
       var upgradeObj = this.upgradeObj
       var that = this
       var content = '您申请升级的代理需先完善资料，'
-      if (upgradeObj.changeInvite==1) {
+      if (upgradeObj.changeInvite === 1) {
         content += '因为您升级的代理等级等于或超过当前上级代理，升级后，将不再是当前代理的下级。'
       }
       content += '是否确认发起升级?'
@@ -365,7 +365,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

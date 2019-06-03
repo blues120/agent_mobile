@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     sendGoods (id) { // 跳转到下级进货的订单详情页。去发货
-      if (this.$route.path == '/home/other-orders/xjorder-detail') {
+      if (this.$route.path === '/home/other-orders/xjorder-detail') {
         this.$emit('changeType')
       } else {
         this.$router.push({name: 'xjOrderDetail', query: {orderId: id, type: 'send'}})
@@ -47,11 +47,11 @@ export default {
     },
     click (key) {
       var that = this
-      if (key != 'cancel') {
+      if (key !== 'cancel') {
         if (!this.deliveryObj[key]) { // 如果点击的这个实体库存或者云库存不存在,跳转到补货统计页面
           this.$router.push({name: 'waitSend', query: {from: key, orderId: this.deliveryObj.caozuoId}})
         } else {
-          if (key == 'physical') {
+          if (key === 'physical') {
             this.sendGoods(this.deliveryObj.caozuoId)
           } else {
             this.deliveryObj.warningObj = {

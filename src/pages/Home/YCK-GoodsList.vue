@@ -115,7 +115,7 @@ export default {
         showCancel: true, // 是否显示取消按钮
         body: details, // 提示的文字
         onConfirm: function () {
-          if (spreadPrice==0) { // 免费的不需要调selectmethod 方法,请求选择支付方式
+          if (spreadPrice === 0) { // 免费的不需要调selectmethod 方法,请求选择支付方式
             that.payObj = {
               free: true, // 需要支付的金额是0
               exchangeId: exchangeId,
@@ -180,7 +180,7 @@ export default {
       })
     },
     goTH () { // 立即提货
-      if (this.totalCount == 0) {
+      if (this.totalCount === 0) {
         this.$vux.toast.text('请先选择商品~', 'middle')
         return
       }
@@ -211,7 +211,7 @@ export default {
       })
     },
     getgoodsList () {
-      if (this.type==1) { // 进来提货的，请求云库存列表就行
+      if (this.type === 1) { // 进来提货的，请求云库存列表就行
         this.getgoodsListXhr()
       } else { // 进来换货的，请求换货列表
         this.getcloudHHXhr()
@@ -228,7 +228,7 @@ export default {
       }).then((res) => {
         if (res) {
           var goodsListArry = this.goodsListArry ? this.page === 1 ? [] : this.goodsListArry : []
-          this.hasNexPage = ((res.data.data.totalPage > res.data.data.currPage) ? true : false)
+          this.hasNexPage = ((res.data.data.totalPage > res.data.data.currPage))
           goodsListArry = goodsListArry.concat(res.data.data.list)
           goodsListArry = this.uniqueObj(goodsListArry, 'productId') // 去一下重防止重复请求
           goodsListArry.forEach((t) => {
@@ -266,7 +266,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -316,7 +316,7 @@ export default {
     },
     change (id, val) {
       var goodsListArry = this.goodsListArry
-      if (this.type == 2) { // 如果是换货
+      if (this.type === 2) { // 如果是换货
         if (!this.CanInput) { // 不可以输入(已经有商品的换货数量大于0了)
           for (var i in goodsListArry) {
             if (goodsListArry[i].id === id) {
@@ -339,7 +339,7 @@ export default {
           return t.startAccount === 0
         })
         this.goodsListArry = goodsListArry
-      } else if (this.type == 1) { // 如果是立即提货
+      } else if (this.type === 1) { // 如果是立即提货
         var totalCount = 0
         for (var j in goodsListArry) {
           totalCount += goodsListArry[j].startAccount

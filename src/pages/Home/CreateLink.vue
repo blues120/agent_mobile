@@ -73,7 +73,7 @@ export default {
     },
     isWechat () {
       var ua = window.navigator.userAgent.toLowerCase()
-      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      if (ua.match(/MicroMessenger/i) === 'micromessenger') {
         return true
       } else {
         return false
@@ -94,18 +94,18 @@ export default {
     },
     // 微信分享
     shareEvent (dataParams) {
-      var url = window.location.href.split('#')[0]
+      // var url = window.location.href.split('#')[0]
       wx.ready(function () {
         var linkId = localStorage.getItem('linkId')
-        let img_url = 'http://shms.ijinzao.com/share.jpg'
-        let share_link = 'http://shms.ijinzao.com/?linkId=' + linkId
+        let imgUrl = 'http://shms.ijinzao.com/share.jpg'
+        let shareLink = 'http://shms.ijinzao.com/?linkId=' + linkId
         const {title, desc, link} = dataParams || {}
         let dataShare = {
           title: title || '哈哈哈哈我是测试标题',
           desc: desc || '我是描述信息',
-          link: link || share_link,
-          icon: img_url,
-          imgUrl: img_url,
+          link: link || shareLink,
+          icon: imgUrl,
+          imgUrl: imgUrl,
           type: 'link',
           dataUrl: '',
           success: function () {},

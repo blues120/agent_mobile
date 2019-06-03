@@ -75,15 +75,15 @@ export default {
       this.txAccount = this.userTXObj.balanceIncome
     },
     onChange (val) { // 改变提现方式
-      if (this.txway[0]=='微信钱包') {
+      if (this.txway[0] === '微信钱包') {
         this.method = '1'
-      } else if (this.txway[0]=='支付宝') {
+      } else if (this.txway[0] === '支付宝') {
         this.method = '2'
-      } else if (this.txway[0]=='银行卡') {
+      } else if (this.txway[0] === '银行卡') {
         this.method = '3'
       }
       for (var i in this.skList) {
-        if (this.skList[i].accountType == this.method) {
+        if (this.skList[i].accountType === this.method) {
           this.accountName = this.skList[i].accountName
           this.accountNo = this.skList[i].accountNo
         }

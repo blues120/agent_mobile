@@ -47,7 +47,8 @@
           <div class="wxpayBox" v-if="PayDetailObj.Superiorobj.wechatQrList">
             <p>微信付款码</p>
             <div>
-              <img class="previewer-demo-img"  v-for="(item, index) in PayDetailObj.Superiorobj.wechatQrList" :src="item" width="100" @click="show(index)">
+
+              <img class="previewer-demo-img"  v-for="(item, index) in PayDetailObj.Superiorobj.wechatQrList" :key="index" :src="item" width="100" @click="show(index)">
               <span>点击长按扫码付款</span>
               <div v-transfer-dom>
                 <previewer :list="PayDetailObj.Superiorobj.wechatQrList" ref="previewer" :options="options" @on-index-change="logIndexChange"></previewer>
@@ -157,7 +158,7 @@ export default {
     // this.PayDetailObj.agentEntity &&
     if (this.PayDetailObj.agentFinanceRechargeAccountEntities.length > 0) {
       for (var i in this.PayDetailObj.agentFinanceRechargeAccountEntities) {
-        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType ==1) {
+        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType === 1) {
           Superiorobj.wechatNumber = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountNo
           Superiorobj.wechatNick = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountName
           Superiorobj.wechatQr = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].qrCode
@@ -165,7 +166,7 @@ export default {
             Superiorobj.wechatQrList = [this.PayDetailObj.agentFinanceRechargeAccountEntities[i].qrCode]
           }
         }
-        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType ==2) {
+        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType === 2) {
           Superiorobj.alipayNumber = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountNo
           Superiorobj.alipayNick = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountName
           Superiorobj.alipayQr = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].qrCode
@@ -173,7 +174,7 @@ export default {
             Superiorobj.alipayQrList = [this.PayDetailObj.agentFinanceRechargeAccountEntities[i].qrCode]
           }
         }
-        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType ==3) {
+        if (this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountType === 3) {
           Superiorobj.YXNumber = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountNo
           Superiorobj.YXNick = this.PayDetailObj.agentFinanceRechargeAccountEntities[i].accountName
         }
@@ -182,10 +183,10 @@ export default {
     }
     var picIds = []
     var UploadPicArry = []
-    for (var i in this.PayDetailObj.uploadFileEntities) {
+    for (var k in this.PayDetailObj.uploadFileEntities) {
       var obj = {
-        src: this.PayDetailObj.uploadFileEntities[i].filePath,
-        id: this.PayDetailObj.uploadFileEntities[i].id
+        src: this.PayDetailObj.uploadFileEntities[k].filePath,
+        id: this.PayDetailObj.uploadFileEntities[k].id
       }
       UploadPicArry.push(obj)
       picIds.push(this.PayDetailObj.uploadFileEntities[i].id)
@@ -222,7 +223,7 @@ export default {
     removeUpload (index) {
       if (this.UploadPicArry[index].id) { // 删除的是之前存进去的撤单图片凭证
         for (var m in this.picIds) { // 实际保存图片id数组效果删除
-          if (this.picIds[m] == this.UploadPicArry[index].id) {
+          if (this.picIds[m] === this.UploadPicArry[index].id) {
             this.picIds.splice(m, 1)
           }
         }
@@ -244,7 +245,7 @@ export default {
       }
     },
     goSubmit () {
-      if (this.picIds.length==0 && this.tempArry.length==0) {
+      if (this.picIds.length === 0 && this.tempArry.length === 0) {
         this.$vux.toast.text('请上传打款凭证', 'middle')
         return
       }

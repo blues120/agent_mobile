@@ -46,7 +46,7 @@
                     <span  v-if="watchMoreFnc">订单编号：{{orderitem.orderNo}}</span>
                     <span  v-else> 下级：{{orderitem.agentName}} （{{orderitem.agentMobile}}）</span>
                     <span class="orderstatus" v-if="orderitem.tabStatusString">{{orderitem.tabStatusString}}</span>
-                    <span class="orderstatus" v-else>{{orderitem.orderStatus==1 ? (orderitem.closedStr == '未关闭' ? '待付款': '已关闭' ) : (orderitem.orderStatus==2 ? '待发货' : (orderitem.orderStatus==3 ? '待收货' : '已完成' )) }}</span>
+                    <span class="orderstatus" v-else>{{orderitem.orderStatus==1 ? (orderitem.closedStr === '未关闭' ? '待付款': '已关闭' ) : (orderitem.orderStatus==2 ? '待发货' : (orderitem.orderStatus==3 ? '待收货' : '已完成' )) }}</span>
                   </div>
                   <p class="order-time"  v-if="!watchMoreFnc">{{orderitem.createTime}}</p>
                   <div class="orderinfobox" >
@@ -231,7 +231,7 @@ export default {
     if (this.$route.query.orderStatus) {
       this.orderStatus = this.$route.query.orderStatus
     }
-    if (this.$route.query.orderStatus == 1) {
+    if (this.$route.query.orderStatus === 1) {
       this.tabLabels = [
         {
           label: '待我审核',
@@ -252,7 +252,7 @@ export default {
       ]
       this.selectedLabel = '待我审核'
     }
-    if (this.$route.query.orderStatus == 2) {
+    if (this.$route.query.orderStatus === 2) {
       this.tabLabels = [
         {
           label: '待我发货',
@@ -290,9 +290,10 @@ export default {
       this.selectedLabel = '待我发货'
     }
     for (var u in this.tabLabels) {
+      console.log(u)
       this.showOrderArry.push({})
     }
-    if (this.orderStatus ==1 || this.orderStatus ==2) {
+    if (this.orderStatus === 1 || this.orderStatus === 2) {
       this.getAllTypeNum()
     }
     this.getAllorders(this.tabLabels[this.selectInde])
@@ -307,7 +308,7 @@ export default {
       })
     },
     goLeaderSend () { // 转上级发货
-      var that = this
+      // var that = this
       this.warningObj = {
         showWaring: true, // 默认不展示
         tit: '确定要转上级发货吗?', // 提示的标题
@@ -348,7 +349,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -430,8 +431,8 @@ export default {
         }
       }).then((res) => {
         this.tabLabels[this.selectInde].xhrFlag = true
-        this.tabLabels[this.selectInde].hasNexPage = (res.data.data.totalPage > res.data.data.currPage) ? true : false
-        var currentObj = this.showOrderArry[this.selectInde] ? (obj.page==1 ? {} : this.showOrderArry[this.selectInde]) : {}
+        this.tabLabels[this.selectInde].hasNexPage = (res.data.data.totalPage > res.data.data.currPage)
+        var currentObj = this.showOrderArry[this.selectInde] ? (obj.page === 1 ? {} : this.showOrderArry[this.selectInde]) : {}
         if (this.key) { // 如果key 存在说明本次显示的结果是搜索结果
           currentObj.searchArry = currentObj.searchArry ? currentObj.searchArry.concat(res.data.data.list) : [].concat(res.data.data.list)
           currentObj.searchArry = this.uniqueObj(currentObj.searchArry, 'orderId') // 去一下重防止重复请求
@@ -455,7 +456,7 @@ export default {
     onPullingDown () {
       this.tabLabels[this.selectInde].page = 1
       this.getAllorders(this.tabLabels[this.selectInde])
-      if (this.orderStatus ==1 || this.orderStatus ==2) {
+      if (this.orderStatus === 1 || this.orderStatus === 2) {
         this.getAllTypeNum()
       }
     },
@@ -542,7 +543,7 @@ export default {
         var showOrderArry = this.showOrderArry
         for (var i in showOrderArry) {
           for (var j in showOrderArry[i].orderArry) {
-            if (showOrderArry[i].orderArry[j].id == id) {
+            if (showOrderArry[i].orderArry[j].id === id) {
               showOrderArry[i].orderArry.splice(j, 1)
             }
           }
@@ -560,7 +561,7 @@ export default {
         var showOrderArry = this.showOrderArry
         for (var i in showOrderArry) {
           for (var j in showOrderArry[i].orderArry) {
-            if (showOrderArry[i].orderArry[j].id == id) {
+            if (showOrderArry[i].orderArry[j].id === id) {
               showOrderArry[i].orderArry.splice(j, 1)
             }
           }
@@ -573,7 +574,7 @@ export default {
   computed: {
     initialIndex () {
       let index = 0
-      if (this.orderStatus ==1 || this.orderStatus ==2) {
+      if (this.orderStatus === 1 || this.orderStatus === 2) {
         index = findIndex(this.tabLabels, item => item.label === this.selectedLabel)
       }
       return index

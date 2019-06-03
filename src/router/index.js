@@ -101,7 +101,7 @@ const setMyInfo = () => import('@/pages/My/setMyInfo')
 /** 个人资料具体页面 */
 const MyInfoDetail = () => import('@/pages/My/MyInfoDetail')
 /** 我的贷款账户页面 */
-const DK = () => import( '@/pages/My/DK')
+const DK = () => import('@/pages/My/DK')
 /** 我的提现账户页面 */
 const TX = () => import('@/pages/My/TX')
 /** 我的提现账户待结算页面 */

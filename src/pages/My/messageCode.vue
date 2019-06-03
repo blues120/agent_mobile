@@ -51,14 +51,14 @@ export default {
         var inpunext = 'input' + (parseInt(inde) + 1)
         this.$refs[inpunext][0].focus()
       }
-      if (parseInt(inde) == 3) { // 发送请求验证code码
+      if (parseInt(inde) === 3) { // 发送请求验证code码
         var codearry = this.codearry
         var newcode = []
         for (var i in codearry) {
           newcode.push(codearry[i].code)
         }
         newcode = newcode.join('')
-        if (this.ischangeMobile=='true' || this.ischangeMobile==true) {
+        if (this.ischangeMobile === 'true' || this.ischangeMobile === true) {
           this.xhrChangeTel(newcode) // 更换手机拿的验证码
         } else { // 忘记密码拿的验证码
           this.xhrforgotPass(newcode)
@@ -103,8 +103,8 @@ export default {
       }, () => {})
     },
     sendcode () {
-      if (this.countdown == 60) {
-        if (this.ischangeMobile=='true' || this.ischangeMobile==true) {
+      if (this.countdown === 60) {
+        if (this.ischangeMobile === 'true' || this.ischangeMobile === true) {
           this.newTelgetTxtCode()
         } else {
           this.oldTelgetTxtCode()
@@ -119,7 +119,7 @@ export default {
       this.$http.get('agentinfo/fpcode', {
         params: param
       }).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('短信验证码发送成功', 'middle')
           this.djsStart()
         }
@@ -133,7 +133,7 @@ export default {
       this.$http.get('agentinfo/changmobilecode', {
         params: param
       }).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('短信验证码发送成功', 'middle')
           this.djsStart()
         }

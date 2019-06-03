@@ -94,7 +94,7 @@ export default {
           SizeretailPrice: res.data.data.sizeList.length > 0 ? res.data.data.sizeList[0].marketPrice : '', // 进货价
           salesActual: res.data.data.salesActual, // 已经销售数量
           sizeList: res.data.data.sizeList, // 产品的规格
-          SizeInCarNum : res.data.data.sizeList.length > 0 ? (res.data.data.sizeList[0].updateProductCount ? res.data.data.sizeList[0].updateProductCount : 0) : (res.data.data.upperProduct ? res.data.data.upperProduct : 0), // 默认选中的规格的产品在购物车中的数量
+          SizeInCarNum: res.data.data.sizeList.length > 0 ? (res.data.data.sizeList[0].updateProductCount ? res.data.data.sizeList[0].updateProductCount : 0) : (res.data.data.upperProduct ? res.data.data.upperProduct : 0), // 默认选中的规格的产品在购物车中的数量
           SizeActiveId: res.data.data.sizeList.length > 0 ? res.data.data.sizeList[0].id : '', // 默认当前选中的规格id是第一个规格或者空
           stockAmount: res.data.data.stockAmount, // 产品库存
           cartType: this.cartType,
@@ -117,7 +117,7 @@ export default {
     changeListInCarNum (buynum) {
       var sizeList = this.productObj.sizeList
       for (var i in sizeList) {
-        if (sizeList[i].id == this.productObj.SizeActiveId) {
+        if (sizeList[i].id === this.productObj.SizeActiveId) {
           sizeList[i].updateProductCount = buynum
         }
       }

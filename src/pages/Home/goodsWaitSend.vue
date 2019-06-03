@@ -9,7 +9,7 @@
       <div class="columdiv middiv">
         <p>{{list.productName}}</p>
         <p>
-          <span>我的{{list.inventoryType == 1 ? '云': '实体'}}库存：</span>
+          <span>我的{{list.inventoryType === 1 ? '云': '实体'}}库存：</span>
           <span class="redcolor">{{list.inventoryCount}} 件</span></p>
       </div>
       <div class="columdiv">
@@ -24,7 +24,7 @@
 export default {
   created () {
     if (this.$route.query.from) {
-      this.from = this.$route.query.from == 'cloud' ? '1' : '2'
+      this.from = this.$route.query.from === 'cloud' ? '1' : '2'
     }
     if (this.$route.query.orderId) {
       this.orderId = this.$route.query.orderId
@@ -55,7 +55,7 @@ export default {
       localStorage.setItem('cartType', this.from)
       var objpara = this.WaitSendList
       this.$http.post('subPur/oneButtonReplenishment', objpara).then((res) => {
-        if (res.data.code == '200') {
+        if (res.data.code === '200') {
           this.$router.push({name: 'GoTruck', query: {selectArry: res.data.data}})
         }
       }, () => {})

@@ -79,7 +79,7 @@ export default {
   methods: {
     onConfirm () {
       if (this.payObj.CloudGoodschange) { // 如果是云库存付款过来的 1 是换货支付  2 是 提货支付
-        if (this.payObj.CloudGoodschange==2) { // 提货支付离开就跳转到 提货订单页面
+        if (this.payObj.CloudGoodschange === 2) { // 提货支付离开就跳转到 提货订单页面
           this.$router.replace({name: 'THDD', query: {actInde: 1}})
         }
       } else { // 普通订单过来的，取消付款就到订单列表页面
@@ -100,9 +100,9 @@ export default {
       if (this.payObj.free) { // 免费的,直接支付
         this.$emit('confirmPay', true) // 付款操作完成
       } else { // 不是免费的
-        if (this.payObj.PayDetailObj.payMethod==1) { // 在线支付
+        if (this.payObj.PayDetailObj.payMethod === 1) { // 在线支付
           this.orderPayMsg() // 获取支付信息
-        } else if (this.payObj.PayDetailObj.payMethod==4) { // 线下支付
+        } else if (this.payObj.PayDetailObj.payMethod === 4) { // 线下支付
           this.payObj.confirmOrder = false
           this.$router.replace({name: 'Subvoucher'})
           localStorage.removeItem('templeCarList')
@@ -164,7 +164,7 @@ export default {
       paras = Qs.stringify(paras)
       this.$http.post('placeOrders/payment', paras).then((res) => {
         if (res) {
-          if (res.data.code==200) {
+          if (res.data.code === 200) {
             this.$vux.toast.text('支付成功', 'middle')
             if (this.payObj.CloudGoodschange) { // 如果是云库存付款过来的 无论换货或者提货都要触发
               this.$emit('confirmPay', true) // 付款操作完成

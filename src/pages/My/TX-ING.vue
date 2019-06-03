@@ -125,6 +125,7 @@ export default {
   },
   created () {
     for (var u in this.tabLabels) {
+      console.log(u)
       this.AllResPonseArry.push([])
     }
     var userTXObj = JSON.parse(localStorage.getItem('userTXObj'))
@@ -163,7 +164,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -182,7 +183,7 @@ export default {
         }
       }).then((res) => {
         this.tabLabels[this.selectInde].xhrFlag = true
-        this.tabLabels[this.selectInde].hasNexPage = ((res.data.page.totalPage > res.data.page.currPage) ? true : false)
+        this.tabLabels[this.selectInde].hasNexPage = ((res.data.page.totalPage > res.data.page.currPage))
         var currentArry = this.AllResPonseArry[this.selectInde] ? this.AllResPonseArry[this.selectInde] : []
         currentArry = currentArry.concat(res.data.page.list)
         currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求

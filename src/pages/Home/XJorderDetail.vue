@@ -175,7 +175,7 @@ export default {
     if (this.$route.query.type) {
       this.type = this.$route.query.type
     }
-    if (this.type != 'watch') {
+    if (this.type !== 'watch') {
       this.getActiveKD()
     }
     this.getOrderDetail()
@@ -314,7 +314,7 @@ export default {
       })
     },
     onChange (val) { // 改变物流
-      if (this.sex[0] == '设置更多物流') {
+      if (this.sex[0] === '设置更多物流') {
         this.sex = []
         this.$router.push({name: 'commonKD'})
       }
@@ -342,7 +342,7 @@ export default {
         }
       }).then((res) => {
         this.orderObject = res.data.data
-        if (this.orderObject.orderStatus==1 && this.orderObject.closed==0) { // 如果是待付款的则显示定时器
+        if (this.orderObject.orderStatus === 1 && this.orderObject.closed === 0) { // 如果是待付款的则显示定时器
           this.endTime = parseInt(new Date(this.orderObject.createTime).getTime() + 86400000)
           setInterval(this.countTime(), 1000)
         }
@@ -357,7 +357,7 @@ export default {
       this.getPayWay(id)
     },
     goLeaderSend () { // 转上级发货
-      var that = this
+      // var that = this
       this.warningObj = {
         showWaring: true, // 默认不展示
         tit: '确定要转上级发货吗?', // 提示的标题

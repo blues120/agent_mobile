@@ -54,7 +54,7 @@ export default {
         appId = 'wxc7de28d8533ad7ca'
         redirectUrl = encodeURIComponent('https://m.xxxxxx.com/WxAuth')
       }
-      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      if (ua.match(/MicroMessenger/i) === 'micromessenger') {
         window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
       }
     },
@@ -62,7 +62,7 @@ export default {
       let url = sessionStorage.getItem('beforeLoginUrl') || ''
       let fromInvite = localStorage.getItem('fromInvite') || ''
       let inviteId = localStorage.getItem('inviteId') || ''
-      if (status==0) {
+      if (status === 0) {
         if (fromInvite && inviteId) { // 如果是邀请过来的
           this.$router.replace({name: 'firstStep', query: {linkId: inviteId}})
           localStorage.removeItem('fromInvite')
@@ -70,19 +70,19 @@ export default {
         } else {
           this.$router.replace({name: 'Bind'})
         }
-      } else if (status==1) {
-        if (!url || url.indexOf('/authorization') != -1) {
+      } else if (status === 1) {
+        if (!url || url.indexOf('/authorization') !== -1) {
           this.$router.replace({name: 'Home'})
         } else {
-          if (url == '/') {
+          if (url === '/') {
             url = '/home'
           }
           this.$router.replace({path: url})
           sessionStorage.removeItem('beforeLoginUrl')
         }
-      } else if (status==2) {
+      } else if (status === 2) {
         this.$vux.toast.text('代理商被关闭', 'middle')
-      } else if (status==3) {
+      } else if (status === 3) {
         this.$router.replace({name: 'thirdStep'})
       }
     },

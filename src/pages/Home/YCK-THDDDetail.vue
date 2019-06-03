@@ -179,7 +179,7 @@ export default {
         }
       }).then((res) => {
         this.orderObject = res.data.data
-        if (this.orderObject.orderStatus==1 && this.orderObject.closed==0 && (!this.orderObject.payAuditId || this.orderObject.auditStatus>3)) {
+        if (this.orderObject.orderStatus === 1 && this.orderObject.closed === 0 && (!this.orderObject.payAuditId || this.orderObject.auditStatus > 3)) {
           this.endTime = parseInt(new Date(this.orderObject.createTime).getTime() + 86400000)
           setInterval(this.countTime(), 1000)
         }

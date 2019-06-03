@@ -142,9 +142,9 @@ export default {
   },
   methods: {
     sendRequestxhr () {
-      if (this.from == 1) { // 查看我的升级记录
+      if (this.from === 1) { // 查看我的升级记录
         this.getMyrecordList()
-      } else if (this.from == 2) { // 查看下级的升级记录
+      } else if (this.from === 2) { // 查看下级的升级记录
         this.getOtherrecordList()
       }
     },
@@ -159,8 +159,8 @@ export default {
       this.$http.post('getAgentUpgradeList', params).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage))
           currentArry = currentArry.concat(res.data.data.page.list ? res.data.data.page.list : [])
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -184,8 +184,8 @@ export default {
       this.$http.post('getSubAgentUpgradeList', params).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.page.totalPage > res.data.data.page.currPage))
           currentArry = currentArry.concat(res.data.data.page.list ? res.data.data.page.list : [])
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -216,7 +216,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

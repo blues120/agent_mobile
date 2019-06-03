@@ -67,7 +67,7 @@ export default {
     if (userInfo.education) {
       this.educateLevel = [userInfo.education]
     }
-    this.sex = userInfo.gender == 0 ? ['男'] : ['女']
+    this.sex = userInfo.gender === 0 ? ['男'] : ['女']
   },
   beforeDestroy () {
     if (this.needUpdate) {
@@ -92,15 +92,15 @@ export default {
         birthday: this.birthday,
         education: this.educateLevel[0],
         wechat: this.wechat || '',
-        gender: this.sex[0]=='女' ? '1' : '0' // 1 是女 0 是男
+        gender: this.sex[0] === '女' ? '1' : '0' // 1 是女 0 是男
       }
       param = Qs.stringify(param)
       this.$http.post('update', param).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.userInfo.birthday = this.birthday
           this.userInfo.education = this.educateLevel[0]
           this.userInfo.wechat = this.wechat
-          this.userInfo.gender = (this.sex[0] == '女') ? '1' : '0'
+          this.userInfo.gender = (this.sex[0] === '女') ? '1' : '0'
           localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
         }
       })

@@ -143,10 +143,10 @@ export default {
         if (res) {
           var lists = res.data.data
           for (var m in lists) {
-            if (lists[m].accountType==1) {
+            if (lists[m].accountType === 1) {
               this.wxAccountObj = lists[m]
             }
-            if (lists[m].accountType==2) {
+            if (lists[m].accountType === 2) {
               this.zfbAccountObj = lists[m]
             }
           }
@@ -201,7 +201,7 @@ export default {
     eddit (id) { // 编辑id是id 的收款账户
       var list = this.skList
       for (var i in list) {
-        if (list[i].id == id) {
+        if (list[i].id === id) {
           this.addSKAccount = true // 跳出输入账户，账号页面
           this.isEddit = true // 是编辑状态
           this.accountName = list[i].accountName
@@ -222,11 +222,11 @@ export default {
         if (res) {
           var list = this.skList
           for (var i in list) {
-            if (list[i].id == id) {
-              if (list[i].accountType == 1) {
+            if (list[i].id === id) {
+              if (list[i].accountType === 1) {
                 this.wxAccountObj = ''
               }
-              if (list[i].accountType == 2) {
+              if (list[i].accountType === 2) {
                 this.zfbAccountObj = ''
               }
             }

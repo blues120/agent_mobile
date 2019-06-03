@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Qs from 'qs'
+// import Qs from 'qs'
 export default {
   created () {
     if (this.$route.query.obj) {
@@ -108,7 +108,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

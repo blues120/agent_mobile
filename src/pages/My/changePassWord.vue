@@ -49,7 +49,7 @@ export default {
         this.$vux.toast.text('请确认您的新密码!', 'middle')
         return
       }
-      if (this.userPass != this.userPassAgain) {
+      if (this.userPass !== this.userPassAgain) {
         this.$vux.toast.text('两次输入的密码不一致!', 'middle')
         return
       }
@@ -66,7 +66,7 @@ export default {
       }
       param = Qs.stringify(param)
       this.$http.post('setnewpwd', param).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('修改密码成功!', 'middle')
           this.$router ? this.$router.back() : window.history.back()
         }
@@ -80,7 +80,7 @@ export default {
       }
       param = Qs.stringify(param)
       this.$http.post('resetpwd', param).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('修改密码成功!', 'middle')
           this.$router ? this.$router.back() : window.history.back()
         }

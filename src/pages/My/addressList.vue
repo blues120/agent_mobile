@@ -73,7 +73,7 @@ export default {
       }
       param = Qs.stringify(param)
       this.$http.post('address/setdefault', param).then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.$vux.toast.text('设置成功', 'middle')
           this.selectaddressid = id
         }
@@ -83,7 +83,7 @@ export default {
       this.$http.get('placeOrders/getAgentShippingAddressList').then((res) => {
         this.addressList = res.data.data
         for (var i in this.addressList) {
-          if (this.addressList[i].isDefault==1) {
+          if (this.addressList[i].isDefault === 1) {
             this.selectaddressid = this.addressList[i].id
           }
         }
@@ -97,10 +97,10 @@ export default {
       this.AddressInfoObj.edditmyadd = true
       this.AddressInfoObj.createAdd = false
       for (var i in this.addressList) {
-        if (this.addressList[i].id == id) {
+        if (this.addressList[i].id === id) {
           this.AddressInfoObj.newSaveAddressObj = this.addressList[i]
           console.log('this.addressList[i]', this.addressList[i])
-          if (this.addressList[i].isDefault == 1) {
+          if (this.addressList[i].isDefault === 1) {
             this.AddressInfoObj.newSaveAddressObj.isDefault = true
           } else {
             this.AddressInfoObj.newSaveAddressObj.isDefault = false

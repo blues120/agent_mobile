@@ -93,22 +93,22 @@ router.beforeEach(function (to, from, next) {
     localStorage.setItem('inviteId', linkId)
   }
   var authorizrFlag = localStorage.getItem('authorizrFlag') || false
-  if (!((authorizrFlag == true) || (authorizrFlag == 'true')) && to.path != '/authorization') {
+  if (!((authorizrFlag === true) || (authorizrFlag === 'true')) && to.path !== '/authorization') {
     // 第一次进入项目，保存当前路由地址，授权后还会跳到此地址
     localStorage.setItem('beforeLoginUrl', to.fullPath)
     next('/authorization')
     return false
   }
-  if (to.path == '/authorization') {
+  if (to.path === '/authorization') {
     next()
     return false
   }
-  if (linkId && (to.name == 'Home' || to.name == 'firstStep' || to.name == 'thirdStep')) { // 点击邀请链接，跳转首页
-    if (to.query.linkId || to.name == 'thirdStep') {
+  if (linkId && (to.name === 'Home' || to.name === 'firstStep' || to.name === 'thirdStep')) { // 点击邀请链接，跳转首页
+    if (to.query.linkId || to.name === 'thirdStep') {
       next()
       return
     }
-    if (to.name == 'Home') {
+    if (to.name === 'Home') {
       next({
         replace: true,
         path: '/home',

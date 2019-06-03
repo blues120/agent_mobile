@@ -139,7 +139,7 @@ export default {
         }
       }).then((res) => {
         this.goodsList = res.data.data
-        if (this.goodsArry.length==this.goodsList.length) {
+        if (this.goodsArry.length === this.goodsList.length) {
           this.checks = true
         }
       }, () => {})
@@ -187,7 +187,7 @@ export default {
         }
       }).then((res) => {
         for (var i in this.goodsList) {
-          if (this.goodsList[i].cartId == this.deletindex) {
+          if (this.goodsList[i].cartId === this.deletindex) {
             this.$vux.toast.text('删除成功', 'middle')
             this.goodsList.splice(i, 1)
           }
@@ -215,7 +215,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -227,7 +227,7 @@ export default {
         var templeCarList = []
         for (var i = 0; i < this.goodsArry.length; i++) {
           for (var j = 0; j < this.goodsList.length; j++) {
-            if (this.goodsList[j].cartId == this.goodsArry[i]) {
+            if (this.goodsList[j].cartId === this.goodsArry[i]) {
               templeCarList.push(this.goodsList[j])
             }
           }
@@ -274,7 +274,7 @@ export default {
       }
       objpara = Qs.stringify(objpara)
       this.$http.post('cart/addProductToCart', objpara).then((res) => {
-        if (res.data.code == '200') {
+        if (res.data.code === '200') {
           goods.totalCartProductCount = productNum
           return true
         }

@@ -4,7 +4,7 @@
       <span>累计业绩总金额</span>
       <span class="bigf">¥2914.00</span>
     </div>
-    <div class="yjitem" v-for="i in 6" @click="showDetail">
+    <div class="yjitem" v-for="i in 6" :key="i" @click="showDetail">
       <div class="yjleft">
         <img src="~@/assets/images/my/djs.png" alt="" class="icon">
         <p>

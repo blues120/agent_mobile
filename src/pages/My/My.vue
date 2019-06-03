@@ -131,7 +131,7 @@ export default {
     },
     getUerInfo () {
       this.$http.get('info').then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.userInfo = res.data.data
           localStorage.setItem('userInfo', JSON.stringify(res.data.data))
         }
@@ -139,7 +139,7 @@ export default {
     },
     getTXInfo () {
       this.$http.get('incoming/info').then((res) => {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           this.userTXObj = res.data.data
           localStorage.setItem('userTXObj', JSON.stringify(res.data.data))
         }

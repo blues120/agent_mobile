@@ -84,7 +84,7 @@ export default {
     if (this.$route.query.type) {
       this.type = this.$route.query.type
     }
-    if (this.type == 2) {
+    if (this.type === 2) {
       this.tabLabels[0].label = '实体库存商品'
       this.tabLabels[0].status = '2'
       this.selectedLabel = '实体库存商品'
@@ -154,7 +154,7 @@ export default {
       if (this.selectInde === 0) {
         this.getgoodsListXhr()
       } else {
-        if (this.type==1) {
+        if (this.type === 1) {
           this.getRecordListXhr()
         } else {
           var scrollnow = 'scroll' + this.selectInde
@@ -174,8 +174,8 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage))
           currentArry = currentArry.concat(res.data.data.list)
           currentArry = this.uniqueObj(currentArry, 'productId') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -201,8 +201,8 @@ export default {
         if (res) {
           console.log('res', res)
           this.tabLabels[this.selectInde].xhrFlag = true
-          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page==1 ? [] : this.showOrderArry[this.selectInde]) : []
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage) ? true : false)
+          var currentArry = this.AllGoodsListArry[this.selectInde] ? (this.tabLabels[this.selectInde].page === 1 ? [] : this.showOrderArry[this.selectInde]) : []
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.totalPage > res.data.data.currPage))
           currentArry = currentArry.concat(res.data.data.list)
           currentArry = this.uniqueObj(currentArry, 'productId') // 去一下重防止重复请求
           this.AllGoodsListArry[this.selectInde] = currentArry
@@ -233,7 +233,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }

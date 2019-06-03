@@ -358,7 +358,7 @@ export default {
         this.$http.post('placeOrders/saveTheShippingAddress', addressEntity).then((res) => {
           this.$vux.toast.text('新增地址成功!', 'middle')
           this.addressUpdate = true
-          if (addressEntity.isDefault == 1 || !this.addressInfoObj) {
+          if (addressEntity.isDefault === 1 || !this.addressInfoObj) {
             this.addressInfoObj = addressEntity
             this.addressInfoObj.address = newSaveAddressObj.address
             this.addressInfoObj.id = '' // 新增地址是默认地址的话，暂不知道默认地址的id
@@ -375,7 +375,7 @@ export default {
         this.$http.post('placeOrders/updateTheShippingAddress', addressEntity).then((res) => {
           this.$vux.toast.text('保存地址成功!', 'middle')
           this.addressUpdate = true
-          if (addressEntity.isDefault == 1) {
+          if (addressEntity.isDefault === 1) {
             this.addressInfoObj = addressEntity
             this.addressId = [addressEntity.provinceId, addressEntity.cityId, addressEntity.countyId].join(',')
             // this.getPostPrice()
@@ -399,8 +399,8 @@ export default {
       }).then((res) => {
         this.$vux.toast.text('地址删除成功!', 'middle')
         for (var i in this.addressList) { // 如果删除地址的时候删到默认地址就在请求一次新的默认地址
-          if (this.addressList[i].id == this.goDeletAddressId) {
-            if (this.addressList[i].isDefault ==1) {
+          if (this.addressList[i].id === this.goDeletAddressId) {
+            if (this.addressList[i].isDefault === 1) {
               this.getDefaultAddress()
             }
           }
@@ -464,7 +464,7 @@ export default {
     selectAdd (id) { // 选择地址页
       this.selectaddressid = id
       for (var i in this.addressList) {
-        if (this.addressList[i].id == id) {
+        if (this.addressList[i].id === id) {
           this.addressInfoObj = this.addressList[i]
           this.addressId = [this.addressList[i].provinceId, this.addressList[i].cityId, this.addressList[i].countyId].join(',')
           // this.getPostPrice()
@@ -474,7 +474,7 @@ export default {
     },
     editAddress (list) {
       this.newSaveAddressObj = list
-      if (list.isDefault == 1) {
+      if (list.isDefault === 1) {
         this.newSaveAddressObj.isDefault = true
       } else {
         this.newSaveAddressObj.isDefault = false

@@ -4,7 +4,7 @@
       <img src="~@/assets/images/my/ringball.png" alt="ICON" class="headimg">
       <p>
         <span v-if="txobj.status==1">提现申请已提交，请等待审核</span>
-        <span v-if="txobj.status==2 ||txobj.status==3 ||txobj.status == 4 ">{{txobj.statusString}}</span>
+        <span v-if="txobj.status==2 ||txobj.status==3 ||txobj.status === 4 ">{{txobj.statusString}}</span>
         <span v-if="txobj.reason">{{txobj.reason}}</span>
       </p>
     </div>
@@ -26,9 +26,9 @@
       </div>
       <div class="line"></div>
       <div class="boxitem">
-        <div class="stepnum" :class="{actStep:txobj.status == 3 || txobj.status == 2 ||txobj.status == 4}"><p>3</p></div>
+        <div class="stepnum" :class="{actStep:txobj.status === 3 || txobj.status === 2 ||txobj.status === 4}"><p>3</p></div>
         <div class="stepdesc">
-          <span>{{txobj.status == 2 ||txobj.status == 3 ||txobj.status == 4 ? txobj.statusString : '提现成功'}}</span>
+          <span>{{txobj.status === 2 ||txobj.status === 3 ||txobj.status === 4 ? txobj.statusString : '提现成功'}}</span>
           <span class="tx-status" v-if="txobj.operateTime">{{txobj.operateTime}}</span>
         </div>
       </div>

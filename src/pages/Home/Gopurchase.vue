@@ -123,7 +123,7 @@ export default {
     if (this.$route.query.firstPurchase) { // 如果是一键补货的，会把选中的商品的 id 数组传过来，获取列表成功后，选中数组中的id 的商品将会被选中
       this.firstPurchase = this.$route.query.firstPurchase
     }
-    if (this.$route.path == '/home/go-purchase' || this.$route.path =='/home/go-purchase/go-truck') {
+    if (this.$route.path === '/home/go-purchase' || this.$route.path === '/home/go-purchase/go-truck') {
       this.getGoodsType() // 获取所有的产品类型
     }
   },
@@ -148,9 +148,9 @@ export default {
     changeListInCarNum (buynum) {
       var NowGoodsList = this.AllGoodsListArry[this.selectInde]
       for (var i in NowGoodsList) {
-        if (NowGoodsList[i].id == this.productObj.productId) {
+        if (NowGoodsList[i].id === this.productObj.productId) {
           for (var j in NowGoodsList[i].sizeList) {
-            if (NowGoodsList[i].sizeList[j].id == this.productObj.SizeActiveId) {
+            if (NowGoodsList[i].sizeList[j].id === this.productObj.SizeActiveId) {
               NowGoodsList[i].sizeList[j].updateProductCount = buynum
             }
           }
@@ -162,7 +162,7 @@ export default {
       var allArr = [] // 建立新的临时数组
       var idsArr = []
       for (let i = 0; i < array.length; i++) {
-        if (idsArr.indexOf(parseInt(array[i][attr])) == -1) {
+        if (idsArr.indexOf(parseInt(array[i][attr])) === -1) {
           idsArr.push(parseInt(array[i][attr]))
           allArr.push(array[i])
         }
@@ -209,6 +209,7 @@ export default {
         }
         this.tabLabels = tables
         for (var u in this.tabLabels) {
+          console.log(u)
           this.AllGoodsListArry.push([])
         }
         this.selectedLabel = this.tabLabels[0].label
@@ -236,7 +237,7 @@ export default {
       }).then((res) => {
         if (res) {
           this.tabLabels[this.selectInde].xhrFlag = true
-          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.list.totalPage > res.data.data.list.currPage) ? true : false)
+          this.tabLabels[this.selectInde].hasNexPage = ((res.data.data.list.totalPage > res.data.data.list.currPage))
           var currentArry = this.AllGoodsListArry[this.selectInde] ? this.AllGoodsListArry[this.selectInde] : []
           currentArry = currentArry.concat(res.data.data.list.list)
           currentArry = this.uniqueObj(currentArry, 'id') // 去一下重防止重复请求
@@ -292,7 +293,7 @@ export default {
       }
       objpara = Qs.stringify(objpara)
       this.$http.post('cart/addProductToCart', objpara).then((res) => {
-        if (res.data.code == '200') {
+        if (res.data.code === '200') {
           this.$vux.toast.text('加入购物车成功', 'middle')
           goods.cartProductCount++
           this.productObj.count++
