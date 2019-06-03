@@ -1,0 +1,588 @@
+                   *{
+                     box-sizing: border-box;
+                   }
+input[type="radio"]{
+  display:none;
+}
+input[type="radio"] + label:before {
+  content: '';
+  display: inline-block;
+  width: .12rem;
+  height: .12rem;
+  border:.01rem solid;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin:0 .1rem 0 .05rem;
+  transition: all .5s;
+}
+input[type="radio"]:checked + label:before {
+  background-image: url('~@/assets/images/gosettlement/checked.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+textarea::-webkit-input-placeholder{
+  color: rgba(153,153,153,1) !important;
+}
+.fnctop{
+  width: 100%;
+  height: 0.3rem;
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closebtn{
+  position: absolute;
+  width: .3rem;
+  height: .3rem;
+  top: 0;
+  right: .1rem;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  line-height: .3rem;
+}
+/deep/.weui-cells{
+  margin-top: 0;
+}
+/deep/.weui-cell{
+  /*padding: 10px 0;*/
+}
+/deep/.weui-cells:before{
+  border: 0;
+}
+/deep/.weui-cell.vux-cell-no-border-intent:before{
+  height: 0;
+  visibility: hidden;
+}
+/deep/.vux-cell-box{
+  height: .41rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+  .weui-cell{
+    padding-left: .22rem;
+    flex: 1;
+  }
+  .weui-cell__hd{
+    margin-right: .2rem;
+  }
+}
+/deep/.weui-cells:after{
+  border: 0;
+}
+.addnewaddbtn{
+  width: 100%;
+  height: .4rem;
+  text-align: center;
+  line-height: .4rem;
+  background-color: #e53a4a;
+  border-radius: 0;
+  font-size: .15rem;
+  color: #fff;
+}
+.addpartbox{
+  width: 100%;
+  height:2.7rem;
+  overflow-y: scroll;
+}
+.newsmalladdbox{
+  width: 94%;
+  margin-left: 3%;
+  border-bottom: .01rem solid rgba(153, 153, 153,.1);
+  height: .5rem;
+  display: flex;
+  align-items: center;
+  .addinfobox{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: .12rem;
+    color: #c9cacd;
+    p{
+      width: 2.82rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    p.adduserinfo{
+      color: #333;
+      span{
+        max-width: 1.41rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+      }
+    }
+  }
+  .editicon{
+    width: .19rem;
+    height: .22rem;
+    margin-left: .12rem;
+  }
+}
+.newsmalladdbox:last-child{border-bottom: 0}
+.slide {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 0;
+  transition: max-height .5s cubic-bezier(0, 1, 0, 1) -.1s;
+  .funcbtnbox{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    span{
+      padding: .02rem .1rem;
+      font-size: .12rem;
+      border:.01rem solid rgba(153,153,153,1);
+      border-radius: .1rem;
+      margin-bottom: .1rem;
+      margin-right: .15rem;
+    }
+    .subbtnnow{
+      color: #00A2E9;
+      border-color: #00A2E9;
+    }
+  }
+}
+.animate {
+  max-height: 9999px;
+  transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+  transition-delay: 0s;
+}
+.aibox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img{
+    width: .22rem;
+    height: .21rem;
+    margin:0 0.06rem 0 .12rem;
+  }
+  span{
+    font-size: .13rem;
+  }
+  div{
+    //flex: 1;
+    padding-left: 0;
+    font-size: .1rem;
+    /deep/.vux-label{
+      font-size: .10rem;
+      color: rgba(153,153,153,1);
+    }
+  }
+}
+.AiAddress{
+  width: 3.51rem;
+  height: .62rem;
+  margin: 0 0 .1rem;
+  padding: .06rem .2rem;
+  background:rgba(245,245,245,1);
+  border: none;
+  resize: none;
+  outline: none;
+}
+.groupitem{
+  width: 100%;
+  height: .42rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 0 .22rem;
+  font-size: .16rem;
+  border-bottom: .01rem solid #f5f6f7;
+  /deep/.vux-cell-box{
+    width: 3.2rem;
+  }
+  /deep/.weui-cell{
+    padding: 0;
+  }
+  /deep/.weui-label{
+    margin-right: .2rem;
+  }
+  /deep/.weui-cell:before{
+    display: none;
+  }
+  input{
+    font-size: .15rem;
+    margin-left: .1rem;
+    padding-left: .1rem;
+    flex: 1;
+    height: 100%;
+    outline: none;
+  }
+  .userTel{
+    font-size: .15rem;
+    margin-left: .1rem;
+    padding-left: .1rem;
+    flex: 1;
+    height: 100%;
+    outline: none;
+  }
+  .adddetail{
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+.funcaddressbox{
+  width: 100%;
+  height: .5rem;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #999;
+  padding-right: .13rem;
+  .sperateline{
+    margin: 0 .1rem;
+  }
+  .giewxadd{
+    color: #00A2E9;
+  }
+}
+.newbrnbox{
+  width: 100%;
+  height: .49rem;
+  display: flex;
+  align-items: center;
+  p{
+    flex: 1;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: .16rem;
+    justify-content: center;
+  }
+  .deletnewaddbtn{
+    background:rgba(137,137,137,1);
+  }
+  .savenewaddbtn{
+    background:rgba(0,162,233,1);
+  }
+}
+.diyZZ{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 503;
+}
+.orderconfirmbox{
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: .16rem;
+  .orderprice{
+    color: #FF0000;
+  }
+  .ordertit{
+    margin: .17rem auto;
+  }
+  .paymypocket{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: .1rem;
+    margin-bottom: .2rem;
+    p{
+      display: flex;
+      align-items: center;
+    }
+    .lefticon{
+      width: .21rem;
+      height: .20rem;
+      margin: 0 .12rem 0 .13rem;
+    }
+    .mypoint{
+      font-size: .15rem ;
+      margin-left: .05rem;
+      color: #FF0000;
+    }
+  }
+  .midbox{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    .lefticon{
+      width: .21rem;
+      height: .20rem;
+      margin: 0 .12rem 0 .13rem;
+    }
+    div{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: .58rem;
+      justify-content: center;
+      p{
+        width: 100%;
+        white-space: nowrap;
+        margin: .05rem 0;
+      };
+      .moretipos{
+        width: 100%;
+      }
+    }
+    .righticon{
+      width: .18rem;
+      height: .18rem;
+      margin: 0 .13rem 0 .1rem;
+    }
+  }
+}
+.dialog-pass{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .passwordboxtit{
+    width: 100%;
+    height: .4rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    border-bottom: .01rem solid rgba(245,245,245,1);
+    img{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: .12rem;
+      margin: auto;
+      width:.17rem ;
+      height: .17rem;
+    }
+  }
+  p{
+    width: 100%;
+    height: .3rem;
+    text-align: center;
+    line-height: .3rem;
+    border-bottom: .01rem solid rgba(245,245,245,1);
+    font-size: .13rem;
+  }
+  .inputpass{
+    width: 2.8rem ;
+    border: .01rem solid rgba(0,162,233,1);
+    border-radius: .22rem;
+    height: .44rem;
+    line-height: .44rem;
+    background: none;
+    margin:.1rem 0.1rem .1rem
+  }
+  /deep/.weui-cell:before{
+    display: none;
+  }
+  .forgetPass{
+    font-size: .16rem;
+    color:rgba(0,162,233,1);
+    text-decoration: underline;
+    width: .8rem;
+    white-space: nowrap;
+    text-align: right;
+    display: inline-block;
+    margin:.1rem -1.25rem .25rem 0;
+  }
+  .surebtn{
+    width:2.20rem;
+    height:.44rem;
+    background:rgba(0,162,233,1);
+    border-radius:.22rem;
+    font-size: .16rem;
+    margin: 0 auto .5rem;
+    text-align: center;
+    line-height: .44rem;
+    color: #fff;
+  }
+}
+body{
+  font-size: .15rem;
+  .go-settlement{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 95;
+    background-color: #f5f6f7 ;
+    padding-top: .46rem;
+    .address{
+      width: 100%;
+      box-sizing: border-box;
+      height:.75rem ;
+      background-color: #fff;
+      margin: .1rem 0;
+      display: -webkit-box;
+      font-size:.12rem ;
+      align-items: center;
+      .addressicon{
+        width: .22rem;
+        height: .28rem;
+        margin:.08rem .2rem 0 .15rem;
+      }
+      .morecz{
+        width: .11rem;
+        height: .18rem;
+        margin:0.2rem .12rem 0 .36rem;
+      }
+      .userinfo{
+        flex: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .uinfotop{
+          display: flex;
+          align-items: center;
+          font-size:.15rem ;
+          height: .22rem;
+          margin: .05rem 0 0.1rem;
+          .uname{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+          }
+          .tel{
+            margin: 0 .26rem 0 .16rem;
+          }
+          .addressflag{
+            min-width:.54rem;
+            max-width:.54rem;
+            height:.21rem;
+            background:rgba(0,162,233,1);
+            border-radius:.04rem;
+            font-size: 0.14rem;
+            color: #fff;
+            text-align: center;
+            line-height: .21rem;
+          }
+        }
+        p{
+          color:rgba(153,153,153,1);
+          overflow:hidden;
+          text-overflow:ellipsis;
+          display:-webkit-box;
+          -webkit-box-orient:vertical;
+          -webkit-line-clamp:2;
+          line-height:.17rem;
+        }
+      }
+    }
+    .fmsmsg{
+      width: 100%;
+      /*height: 2.17rem;*/
+      background:rgba(255,255,255,1);
+      .fmsdetail{
+        height: .41rem;
+        border-bottom: .01rem solid rgba(153,153,153,.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 .16rem;
+      }
+      .cloudDescTip{
+        width:3.45rem;
+        color: #FF0000;
+        margin: 0 auto;
+        font-size: .14rem;
+        line-height: 1.2;
+        letter-spacing: .01rem;
+      }
+      .fmsask{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        textarea{
+          width:3.45rem;
+          height:1.08rem;
+          background:rgba(247,247,247,1);
+          margin-top: .14rem;
+          padding: .18rem .07rem 0 ;
+          font-size: .13rem;
+          border: none;
+          outline: none;
+          resize:none
+        }
+      }
+    }
+    .goodsbox{
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: .5rem;
+      .eachGoods{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom:.01rem solid  rgba(153,153,153,.1);
+        .goodspic{
+          width: 1.06rem;
+          height: 1.06rem;
+          margin: 0 .1rem;
+        }
+        .goodsdetail{
+          flex: 1;
+          height: 1.06rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: .34rem .15rem .20rem 0;
+          font-size: .12rem;
+          p{
+            font-size: .15rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .goodsnum{
+              font-size: .11rem;
+            }
+          }
+        }
+      }
+      .eachGoods:last-child{
+        border-bottom:none
+      }
+    }
+    .footersettlement{
+      display: flex;
+      position: fixed;
+      width: 100%;
+      height: .49rem;
+      background-color: #fff;
+      left: 0;
+      bottom: 0;
+      font-size: .16rem;
+      .surebtn{
+        width: 1.03rem;
+        height: 100%;
+        text-align: center;
+        line-height: .49rem;
+        background:rgba(0,162,233,1);
+        color: #fff;
+        font-size: .17rem;
+      }
+      .footleft{
+        height: 100%;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding-left: .14rem;
+        .dd-price{
+          color: #FF0000;
+        }
+      }
+    }
+  }
+}
